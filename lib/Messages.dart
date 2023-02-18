@@ -42,6 +42,7 @@ class _MessagesState extends State<Messages> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
+            backgroundColor: Colors.teal,
             shape: RoundedRectangleBorder(
                 side: const BorderSide(color: buttonBorderColor, width: 3),
                 borderRadius: BorderRadius.circular(100)),
@@ -57,6 +58,7 @@ class _MessagesState extends State<Messages> {
           ),
           const SizedBox(height: 10),
           FloatingActionButton(
+            backgroundColor: Colors.teal,
             shape: RoundedRectangleBorder(
                 side: const BorderSide(color: buttonBorderColor, width: 3),
                 borderRadius: BorderRadius.circular(100)),

@@ -39,7 +39,7 @@ class _BottomBarState extends State<BottomBar> {
     // ),
     Home(),
     Messages(),
-    addNewPost(),
+    // addNewPost(),
     GlobalChatRelays(),
     Profile(),
   ];
@@ -69,10 +69,10 @@ class _BottomBarState extends State<BottomBar> {
             icon: Icon(Icons.near_me_sharp),
             label: 'Message',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add_circle_rounded),
-            label: 'Add comment',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.add_circle_rounded),
+          //   label: 'Add comment',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.verified_user_rounded),
             label: 'Global',
@@ -83,7 +83,7 @@ class _BottomBarState extends State<BottomBar> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.tealAccent,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         onTap: _onItemTapped,

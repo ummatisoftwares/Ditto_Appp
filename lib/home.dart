@@ -1,5 +1,6 @@
 import 'package:ditto/Messages.dart';
 import 'package:ditto/about.dart';
+import 'package:ditto/globalChats.dart';
 import 'package:ditto/screen/home.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.teal,
           centerTitle: true,
           // leading: const Icon(Icons.menu),
           actions: const [
@@ -27,14 +29,15 @@ class _HomeState extends State<Home> {
           ],
         ),
       drawer: Drawer(
+        backgroundColor: Colors.teal,
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 30),
+              padding: const EdgeInsets.only(top: 60),
               child: ListTile(
                 leading: const Icon(
-                  Icons.home,
+                  Icons.home,color: Colors.black,
                 ),
                 title: const Text('Following'),
                 onTap: () {
@@ -44,7 +47,7 @@ class _HomeState extends State<Home> {
             ),
             ListTile(
               leading: const Icon(
-                Icons.message,
+                Icons.message,color: Colors.black
               ),
               title: const Text('Messages'),
               onTap: () {
@@ -53,16 +56,16 @@ class _HomeState extends State<Home> {
             ),
             ListTile(
               leading: const Icon(
-                Icons.camera_rounded,
+                Icons.camera_rounded,color: Colors.black
               ),
               title: const Text('Global'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const GlobalChatRelays()));
               },
             ),
             ListTile(
               leading: const Icon(
-                Icons.settings,
+                Icons.settings,color: Colors.black
               ),
               title: const Text('Settings'),
               onTap: () {
@@ -71,7 +74,7 @@ class _HomeState extends State<Home> {
             ),
             ListTile(
               leading: const Icon(
-                Icons.info_outline,
+                Icons.info_outline,color: Colors.black
               ),
               title: const Text('About'),
               onTap: () {

@@ -45,6 +45,7 @@ class EventScreenState extends State<EventScreen> {
       appBar: AppBar(
         title: const Text('Argue'),
         centerTitle: true,
+        backgroundColor: Colors.teal,
       ),
       body: Center(
         child: Card(

@@ -40,6 +40,7 @@ class ProfilScreenState extends State<ProfilScreen> {
       appBar: AppBar(
         title: const Text('Profile'),
         centerTitle: true,
+        backgroundColor: Colors.teal,
       ),
       body: Center(
         child: Card(
@@ -153,7 +154,7 @@ class ProfilScreenState extends State<ProfilScreen> {
                       padding: const EdgeInsets.all(15),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: buttonBackgroundColor,
+                          backgroundColor: Colors.teal[700],
                           minimumSize: const Size(100, 50),
                           maximumSize: const Size(100, 50),
                         ),

@@ -52,8 +52,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-
-
   @override
   Widget build(BuildContext context) {
 
@@ -62,16 +60,17 @@ class _MyHomePageState extends State<MyHomePage> {
       body:  Center(
         child: Column(
           children: [
-           const Padding(
-              padding: EdgeInsets.only(top: 248.0),
-              child: Text("Ditto",
-                style: TextStyle(fontSize: 18),),
-            ),
-            const SizedBox(height: 20,),
-            Image.asset("name"),
-            const SizedBox(height: 20,),
+           Padding(
+             padding: const EdgeInsets.only(top: 180),
+             child: Container(
+               height: 180,
+                 width: 180,
+                 child: Image.asset("assets/logo.png")
+             ),
+           ),
+             Text("Hajji", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),),
              Padding(
-               padding: const EdgeInsets.only(left: 80, right: 80),
+               padding: const EdgeInsets.only(left: 80, right: 80, top: 16),
                child: TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -86,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(height: 20,),
             Container(
               decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20)),
-              color: Colors.yellow),
+              color: Colors.tealAccent),
               padding: EdgeInsets.all(10),
               child: InkWell(
                 child:  const Text(

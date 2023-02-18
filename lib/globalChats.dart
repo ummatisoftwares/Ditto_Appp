@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class GlobalChatRelays extends StatefulWidget {
@@ -10,6 +11,31 @@ class GlobalChatRelays extends StatefulWidget {
 class _GlobalChatRelaysState extends State<GlobalChatRelays> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Global Messages"),
+        backgroundColor: Colors.teal,
+        centerTitle: true,
+        leading: InkWell(
+          child: const Icon(
+              Icons.arrow_back),
+          onTap: (){
+            Navigator.pop(context);
+          },
+        ),
+        elevation: 0,
+      ),
+      body: Container(
+        margin: EdgeInsets.symmetric(horizontal: 40),
+        child: Column(
+          children: const [
+            Padding(
+              padding: EdgeInsets.only(top: 80),
+              child: Center(child: Text("Loading.....")),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

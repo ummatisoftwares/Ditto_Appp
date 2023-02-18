@@ -3,6 +3,10 @@ import 'package:ditto/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'Messages.dart';
+import 'about.dart';
+import 'globalChats.dart';
+
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
 
@@ -28,13 +32,13 @@ class _ProfileState extends State<Profile> {
   Widget BuildprofileWidget(){
     switch(_profileSegmentationValue){
       case 0:
-        return const Center(child: Text("Posts", style: TextStyle(fontSize: 25)));
+        return const Center(child: Text("Posts Loading ...", style: TextStyle(fontSize: 25)));
         break;
       case 1:
-        return const Center(child: Text("Replies", style: TextStyle(fontSize: 25),),);
+        return const Center(child: Text("Replies Loading ...", style: TextStyle(fontSize: 25),),);
         break;
       case 2:
-        return const Center(child: Text("Likes", style: TextStyle(fontSize: 25),),);
+        return const Center(child: Text("Loading ...", style: TextStyle(fontSize: 25),),);
         break;
       default:
         return const Center(child: Text("Something Wrong", style: TextStyle(fontSize: 25),),);
@@ -44,110 +48,164 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.black,
-      body: Container(
-        height: 150,
-        width: MediaQuery.of(context).size.width,
-        decoration: const BoxDecoration(
-          color: Colors.blue
+      drawer: Drawer(
+        backgroundColor: Colors.teal,
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 60),
+              child: ListTile(
+                leading: const Icon(
+                  Icons.home,color: Colors.black,
+                ),
+                title: const Text('Following'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ),
+            ListTile(
+              leading: const Icon(
+                  Icons.message,color: Colors.black
+              ),
+              title: const Text('Messages'),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const Messages()));
+              },
+            ),
+            ListTile(
+              leading: const Icon(
+                  Icons.camera_rounded,color: Colors.black
+              ),
+              title: const Text('Global'),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const GlobalChatRelays()));
+              },
+            ),
+            ListTile(
+              leading: const Icon(
+                  Icons.settings,color: Colors.black
+              ),
+              title: const Text('Settings'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(
+                  Icons.info_outline,color: Colors.black
+              ),
+              title: const Text('About'),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const AboutPage()));
+              },
+            ),
+          ],
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 28),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      ),
+      body: Column(
+        children: [
+          Container(
+          height: 150,
+          width: MediaQuery.of(context).size.width,
+          decoration: const BoxDecoration(
+            color: Colors.teal,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 28),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox.shrink(),
+                    PopupMenuButton(
+                      icon: const Icon(
+                        Icons.more_horiz,
+                        color: Colors.white70,
+                        size : 30
+                      ),
+                        itemBuilder: (_){
+                        return <PopupMenuItem<String>>[
+                          PopupMenuItem(value: "Logout",child: InkWell(child: Text("Logout"), onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const MyApp()));},),)
+                        ];
+                        }
+                        )
+                  ],
+                 ),
+          ),
+         ),
+          Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Container(
+              transform: Matrix4.translationValues(0.0, -56.0, 0.0),
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox.shrink(),
-                  PopupMenuButton(
-                    icon: const Icon(
-                      Icons.more_horiz,
-                      color: Colors.white70,
-                      size : 30
-                    ),
-                      itemBuilder: (_){
-                      return <PopupMenuItem<String>>[
-                        PopupMenuItem(value: "Logout",child: InkWell(child: Text("Logout"), onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const MyApp()));},),)
-                      ];
-                      }
-                      )
-                ],
-               ),
-              const SizedBox(height: 80,),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  transform: Matrix4.translationValues(0.0, -56.0, 0.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                         const CircleAvatar(
-                            radius: 45,
-                            backgroundImage: AssetImage(".jpg"),
-                          ),
-                          Container(
-                            width: 100,
-                            height: 35,
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.white70,
-                              border: Border.all(color: Colors.blue)
-                            ),
-                            child: Center(
-                              child: InkWell(
-                                onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const EditProfile()));},
-                                child: const Text(
-                                  "Edit", style: TextStyle(
-                                  fontSize: 17,
-                                  color: Colors.blue,
-                                  fontWeight: FontWeight.bold
-                                ),
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
+                      const CircleAvatar(
+                        radius: 45,
+                        backgroundImage: AssetImage("assets/profile.jpeg"),
                       ),
-                      const SizedBox(height: 20,),
-                      const Text("Ibtisam Ali", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                      const SizedBox(height: 10,),
-                      Row(
-                        children: const [
-                          Text("0 Following", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, letterSpacing: 2),),
-                          SizedBox(width: 20,),
-                          Text("0 Followers", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, letterSpacing: 2),)
-                        ],
-                      ),
-                      const SizedBox(height: 20,),
                       Container(
-                        width: MediaQuery.of(context).size.width,
-                        child: CupertinoSlidingSegmentedControl(
-                          groupValue: _profileSegmentationValue,
-                          thumbColor: Colors.grey,
-                          backgroundColor: Colors.black,
-                          onValueChanged: (changeTab){
-                            setState(() {
-                              _profileSegmentationValue =changeTab!;
-                            });
-                          },
-                          children: _profileTabs,
+                        width: 100,
+                        height: 35,
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.white70,
+                            border: Border.all(color: Colors.blue)
+                        ),
+                        child: Center(
+                          child: InkWell(
+                            onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const EditProfile()));},
+                            child: const Text(
+                              "Edit", style: TextStyle(
+                                fontSize: 17,
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold
+                            ),
+                            ),
+                          ),
                         ),
                       )
                     ],
                   ),
-                ),
+                  const SizedBox(height: 20,),
+                  const Text("Mark Steven", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                  const SizedBox(height: 10,),
+                  Row(
+                    children: const [
+                      Text("20 Following", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, letterSpacing: 2),),
+                      SizedBox(width: 20,),
+                      Text("10 Followers", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, letterSpacing: 2),)
+                    ],
+                  ),
+                  const SizedBox(height: 20,),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: CupertinoSlidingSegmentedControl(
+                      groupValue: _profileSegmentationValue,
+                      thumbColor: Colors.grey,
+                      backgroundColor: Colors.black,
+                      onValueChanged: (changeTab){
+                        setState(() {
+                          _profileSegmentationValue =changeTab!;
+                        });
+                      },
+                      children: _profileTabs,
+                    ),
+                  )
+                ],
               ),
-              BuildprofileWidget(),
-            ],
+            ),
           ),
-        ),
-       ),
+          BuildprofileWidget(),
+        ]
+      ),
        );
     }
   }

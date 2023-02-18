@@ -92,7 +92,7 @@ class HomeScreen extends StatelessWidget {
             shape: RoundedRectangleBorder(
                 side: const BorderSide(color: buttonBorderColor, width: 3),
                 borderRadius: BorderRadius.circular(100)),
-            tooltip: 'Edit your profil',
+            tooltip: 'Edit your profile',
             heroTag: "profil",
             child: const Icon(Icons.vpn_key),
             onPressed: () {
